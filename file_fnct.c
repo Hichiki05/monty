@@ -8,13 +8,13 @@
 
 void open_fl(char *file_nm)
 {
-	FILE *fb = fopen(file_nm, "r");
+	FILE *fd = fopen(file_nm, "r");
 
-	if (file_nm == NULL || fb == NULL)
+	if (file_nm == NULL || fd == NULL)
 		err(2, file_nm);
 
-	read_fl(fb);
-	fclose(fb);
+	read_fl(fd);
+	fclose(fd);
 }
 
 
@@ -24,13 +24,13 @@ void open_fl(char *file_nm)
  * Return: void
  */
 
-void read_fl(FILE *fb)
+void read_fl(FILE *fd)
 {
 	int line_nbr, frm = 0;
 	char *bff = NULL;
 	size_t _lent = 0;
 
-	for  (line_nbr = 1; getline(&bff, &_lent, fb) != -1; line_nbr++)
+	for  (line_nbr = 1; getline(&bff, &_lent, fd) != -1; line_nbr++)
 	{
 		frm = parse_ln(bff, line_nbr, frm);
 	}
@@ -54,7 +54,7 @@ int parse_ln(char *bff, int line_nbr, int frm)
 	const char *sep = "\n ";
 
 	if (bff == NULL)
-		err(4);
+		err_s(4);
 
 	opcode = strtok(bff, sep);
 	if (opcode == NULL)
@@ -105,7 +105,7 @@ void find_fc(char *opcode, char *f_val_strue, int ln_numb, int frm)
 		}
 	}
 	if (flag_s == 1)
-		err(3, ln_numb, opcode);
+		err_s(3, ln_numb, opcode);
 }
 
 
@@ -133,11 +133,11 @@ void call_fun(op_func fc, char *op_str, char *val_str, int ln_numb, int frm)
 			flag_s = -1;
 		}
 		if (val_str == NULL)
-			err(5, ln_numb);
+			err_s(5, ln_numb);
 		for (n = 0; val_str[n] != '\0'; n++)
 		{
 			if (isdigit(val_str[n]) == 0)
-				err(5, ln_numb);
+				err_s(5, ln_numb);
 		}
 		node = create_a_node(atoi(val_str) * flag_s);
 		if (frm == 0)
