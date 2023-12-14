@@ -11,7 +11,7 @@ void open_fl(char *file_nm)
 	FILE *fd = fopen(file_nm, "r");
 
 	if (file_nm == NULL || fd == NULL)
-		err(2, file_nm);
+		err_s(2, file_nm);
 
 	read_fl(fd);
 	fclose(fd);
