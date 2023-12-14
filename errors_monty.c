@@ -80,6 +80,10 @@ void more_err_s(int error_code_s, ...)
 			fprintf(stderr, "L%d: division by zero\n",
 				va_arg(arg, unsigned int));
 			break;
+		case 10:
+			fprintf(stderr, "L%d: can't swap, stack too short\n",
+				va_arg(arg, unsigned int));
+			break;
 		default:
 			break;
 	}
