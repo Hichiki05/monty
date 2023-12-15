@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 /**
  * swap_nodes_s - Swaps the top two elements of the stack.
  * @stack: Double pointer to the beginning of the stack.
@@ -24,4 +23,15 @@ void swap_nodes_s(stack_t **stack, unsigned int line_number)
 	temp->next = *stack;
 	temp->prev = NULL;
 	*stack = temp;
+}
+
+/**
+ * nop - Does nothing.
+ * @stack: Double pointer to the beginning of the stack.
+ * @line_number: Line number of the opcode in the Monty file.
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
 }

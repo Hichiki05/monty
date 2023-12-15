@@ -91,6 +91,7 @@ void find_fc(char *opcode, char *f_val_strue, int ln_numb, int frm)
 		{"pint", print_tp},
 		{"add", add},
 		{"swap", swap_nodes_s},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
